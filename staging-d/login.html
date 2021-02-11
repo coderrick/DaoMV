@@ -17,7 +17,7 @@
       <input type="text" placeholder="Enter Date of Birth" name="uname" required>
 
       <label for="psw"><b>Address</b></label>
-      <input id="a" type="text" placeholder="Enter Wallet Address" name="addy" required>
+      <input id="addy" type="text" placeholder="Enter Wallet Address" name="addy" required>
 
       <button type="submit">Login</button>
       <label>
@@ -32,20 +32,20 @@
   </form>
   <script>
     async function initMetamaskWallet() {
-      address = await window.ethereum.enable()
+      address = await window.ethereum.request({ method: 'eth_accounts' });
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       console.log("made it")
       return address;
     }
-    //document.getElementById("a").value = "Johnny Bravo";
+
     function getAddress() {
       initMetamaskWallet().then(function (result) {
-        console.log(result)
-        document.getElementById("a").value = result.toString();
-
-        return result
+        console.log(result);
+        document.getElementById('addy').value = result;
+        return result;
       });
+
     }
   </script>
 </body>

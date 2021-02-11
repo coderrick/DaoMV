@@ -16,11 +16,11 @@ function formReset() {
 	$('.js-form-step').not('.js-form-step[data-step="1"]').addClass('hidden waiting');
 	$('.js-form-step[data-step="1"]').removeClass('hidden');
 	$('.form-progress-indicator').not('.one').removeClass('active');
-	
+
 	$animContainer.css({
 		'paddingBottom': $('.js-form-step[data-step="1"]').height() + 'px'
 	});
-	
+
 	console.warn('Form reset.');
 	return false;
 }
@@ -32,17 +32,17 @@ function formReset() {
 function setupClickHandlers() {
 
 	// Show next form on continue click
-	$('button[type="submit"]').on('click', function(event) {
-			event.preventDefault();
-			var $currentForm = $(this).parents('.js-form-step');
-			showNextForm($currentForm);
+	$('button[type="submit"]').on('click', function (event) {
+		event.preventDefault();
+		var $currentForm = $(this).parents('.js-form-step');
+		showNextForm($currentForm);
 	});
 
 	// Reset form on reset button click
-	$('.js-reset').on('click', function() {
+	$('.js-reset').on('click', function () {
 		formReset();
 	});
-	
+
 	return false;
 }
 
@@ -62,26 +62,26 @@ function showNextForm($currentForm) {
 
 	// Ensure top of form is in view
 	$('html, body').animate({
-		scrollTop : $progressBar.offset().top
+		scrollTop: $progressBar.offset().top
 	}, 'fast');
 
 	// Hide current form fields
 	$currentForm.addClass('leaving');
-	setTimeout(function() {
+	setTimeout(function () {
 		$currentForm.addClass('hidden');
 	}, 500);
-	
+
 	// Animate container to height of form
 	$animContainer.css({
-		'paddingBottom' : $nextForm.height() + 'px'
-	});  
+		'paddingBottom': $nextForm.height() + 'px'
+	});
 
 	// Show next form fields
 	$nextForm.removeClass('hidden')
-					 .addClass('coming')
-					 .one(transitionEnd, function() {
-						 $nextForm.removeClass('coming waiting');
-					 });
+		.addClass('coming')
+		.one(transitionEnd, function () {
+			$nextForm.removeClass('coming waiting');
+		});
 
 	// Increment value (based on 4 steps 0 - 100)
 	value += 33;
@@ -113,7 +113,7 @@ function showNextForm($currentForm) {
  */
 function setupFloatLabels() {
 	// Check the inputs to see if we should keep the label floating or not
-	$('form input').not('button').on('blur', function() {
+	$('form input').not('button').on('blur', function () {
 
 		// Different validation for different inputs
 		switch (this.tagName) {
@@ -137,7 +137,7 @@ function setupFloatLabels() {
 				break;
 		}
 	});
-	
+
 	return false;
 }
 

@@ -27,6 +27,7 @@
 
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" class="cancelbtn" onclick="getAddress()">Create Wallet</button>
+      <button type="button" class="cancelbtn" onclick="testSend()">Test Transaction</button>
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
   </form>
@@ -35,7 +36,18 @@
       address = await window.ethereum.request({ method: 'eth_accounts' });
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
+      console.log("signer=", signer)
+      console.log("b = ", ethers.utils.formatEther(await provider.getBalance("0x21f2e8dae878a481bd1451789f2b55d3ad527b63")));
       console.log("made it")
+
+      function testSend() {
+        const tx = signer.sendTransaction({
+          to: "0x462E8b591e33365B08994aC7439fd69a7bcED8b1",
+          value: ethers.utils.parseEther("1.0")
+
+        });
+      }
+
       return address;
     }
 
@@ -47,6 +59,8 @@
       });
 
     }
+
+
   </script>
 </body>
 

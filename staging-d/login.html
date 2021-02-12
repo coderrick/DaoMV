@@ -33,16 +33,15 @@
   </form>
   <script>
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
+    const signer = provider.getSigner();
     async function initMetamaskWallet() {
       address = await window.ethereum.request({ method: 'eth_accounts' });
-      
+      initMetamaskWallet().then(function (result) {
+        document.getElementById('addy').value = result;
+      });
       console.log("signer=", signer)
       console.log("b = ", ethers.utils.formatEther(await provider.getBalance("0x21f2e8dae878a481bd1451789f2b55d3ad527b63")));
       console.log("made it")
-
-      
-
       return address;
     }
 
@@ -55,12 +54,12 @@
 
     }
     function testSend() {
-        const tx = signer.sendTransaction({
-          to: "0x462E8b591e33365B08994aC7439fd69a7bcED8b1",
-          value: ethers.utils.parseEther("1.0")
+      const tx = signer.sendTransaction({
+        to: "0x462E8b591e33365B08994aC7439fd69a7bcED8b1",
+        value: ethers.utils.parseEther("1.0")
 
-        });
-      }
+      });
+    }
 
   </script>
 </body>

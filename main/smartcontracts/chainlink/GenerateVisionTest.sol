@@ -3,18 +3,17 @@ pragma experimental ABIEncoderV2;
 import 'Randomness.sol';
 import 'Randomness.sol.old';
 
-contract GenerateDLN{
-    uint256[] public DrivesLicenseNumber;
+contract GenerateVisionTest{
+    uint256[] public VisionTestChartLetters;
 
-    function createDLN() external {
+    function createVisonTestChart() external {
 
         vrf.getRandomNumber(8983);
 
         while(vrf.randIndex() != true) {
-            uint256 DLNdigit = vrf.randomResult() % 2;
-            DrivesLicenseNumber.push(DLNdigit);
+            uint256 letter = vrf.randomResult() % 2;
+            VisionTestChartLetters.push(letter);
             vrf.resetRandomIndex();
         }
     }
 }
-    

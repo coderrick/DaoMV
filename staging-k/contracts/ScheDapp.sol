@@ -27,7 +27,7 @@ contract ScheDapp {
     function supplyEthToCompound(
         address payable _cEtherContract,
         uint256 _value
-    ) private returns (bool) {
+    ) public payable returns (bool) {
         require(_value > fee, "Fee it's not enough!");
         CEth cToken = CEth(_cEtherContract);
 

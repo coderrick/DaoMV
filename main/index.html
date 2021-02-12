@@ -2,171 +2,176 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.4/web3.min.js"></script>
-        <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="application/javascript"></script>
-        <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.4/web3.min.js"></script>
+  <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="application/javascript"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-        <section id="sidenav">
-                
-        </section>
-        <section class="section">
-                <h1>Your Drivers permit application</h1>
+  <section id="sidenav">
 
-                <div class="form-progress">
-                        <progress class="form-progress-bar" min="0" max="100" value="0" step="33"
-                                aria-labelledby="form-progress-completion"></progress>
+  </section>
+  <section class="section">
+    <h1>Your Drivers permit application</h1>
 
-                        <div class="form-progress-indicator one active"></div>
-                        <div class="form-progress-indicator two"></div>
-                        <div class="form-progress-indicator three"></div>
-                        <div class="form-progress-indicator four"></div>
+    <div class="form-progress">
+      <progress class="form-progress-bar" min="0" max="100" value="0" step="33"
+        aria-labelledby="form-progress-completion"></progress>
 
-                        <p id="form-progress-completion" class="js-form-progress-completion sr-only" aria-live="polite">
-                                0% complete</p>
-                </div>
+      <div class="form-progress-indicator one active"></div>
+      <div class="form-progress-indicator two"></div>
+      <div class="form-progress-indicator three"></div>
+      <div class="form-progress-indicator four"></div>
+
+      <p id="form-progress-completion" class="js-form-progress-completion sr-only" aria-live="polite">
+        0% complete</p>
+    </div>
 
 
-                <div class="animation-container">
-                        <!-- Step one -->
-                        <div class="form-step js-form-step" data-step="1">
+    <div class="animation-container">
+      <!-- Step one -->
+      <div class="form-step js-form-step" data-step="1">
 
-                                <p class="form-instructions"><strong>Address and Identity verification.</strong><br></p>
-                                <p>Following question will determine your residency</p>
+        <p class="form-instructions"><strong>Address and Identity verification.</strong><br></p>
+        <p>Following question will determine your residency</p>
 
-                                <form action="" name="form-step-1">
-                                        <div class="fieldgroup">
-                                                <input type="text" name="firstName" id="firstName" />
-                                                <label for="firstName">Name</label>
-                                        </div>
+        <form action="" name="form-step-1">
+          <div class="fieldgroup">
+            <input type="text" name="firstName" id="firstName" />
+            <label for="firstName">Name</label>
+          </div>
 
-                                        <div class="fieldgroup">
-                                                <input type="text" name="firstName" id="firstName" />
-                                                <label for="firstName">Address</label>
-                                        </div>
+          <div class="fieldgroup">
+            <input type="text" name="firstName" id="firstName" />
+            <label for="firstName">Address</label>
+          </div>
 
-                                        <div class="fieldgroup">
-                                                <input type="text" name="firstName" id="firstName" />
-                                                <label for="firstName">Birth</label>
-                                        </div>
+          <div class="fieldgroup">
+            <input type="text" name="firstName" id="firstName" />
+            <label for="firstName">Birth</label>
+          </div>
 
-                                        <!-- <div class="fieldgroup">
+          <!-- <div class="fieldgroup">
                         <input type="text" name="firstName" id="firstName" />
                         <label for="firstName">DLN</label>
                     </div> -->
 
-                                        <div class="fieldgroup">
-                                                <input type="text" name="firstName" id="firstName" />
-                                                <label for="firstName">Home Address</label>
-                                        </div>
+          <div class="fieldgroup">
+            <input type="text" name="firstName" id="firstName" />
+            <label for="firstName">Home Address</label>
+          </div>
 
-                                        <div class="fieldgroup">
-                                                <input type="text" name="firstName" id="firstName" />
-                                                <label for="firstName">Sex</label>
-                                        </div>
-                                        <div class="fieldgroup">
-                                                <input type="text" name="firstName" id="firstName" />
-                                                <label for="firstName">Height</label>
-                                        </div>
+          <div class="fieldgroup">
+            <input type="text" name="firstName" id="firstName" />
+            <label for="firstName">Sex</label>
+          </div>
+          <div class="fieldgroup">
+            <input type="text" name="firstName" id="firstName" />
+            <label for="firstName">Height</label>
+          </div>
 
-                                        <div class="fieldgroup">
-                                                <input type="text" name="firstName" id="firstName" />
-                                                <label for="firstName">Eyes</label>
-                                        </div>
+          <div class="fieldgroup">
+            <input type="text" name="firstName" id="firstName" />
+            <label for="firstName">Eyes</label>
+          </div>
 
-                                        <div class="fieldgroup">
-                                                <input type="text" name="firstName" id="firstName" />
-                                                <label for="firstName">Class</label>
-                                        </div>
+          <div class="fieldgroup">
+            <input type="text" name="firstName" id="firstName" />
+            <label for="firstName">Class</label>
+          </div>
 
-                                        <p>Option to upload forms go here somewhere</p>
+          <p>Option to upload forms go here somewhere</p>
 
-                                        <div class="buttons">
-                                                <button type="button" class="btn btn-alt js-reset">Reset</button>
+          <div class="buttons">
+            <button type="button" class="btn btn-alt js-reset">Reset</button>
 
-                                                <button type="submit" class="btn">Continue</button>
-                                        </div>
-                                </form>
+            <button type="submit" class="btn">Continue</button>
+          </div>
+        </form>
 
-                        </div>
+      </div>
 
-                        <!-- Step two -->
-                        <div class="form-step js-form-step waiting hidden" data-step="2">
+      <!-- Step two -->
+      <div class="form-step js-form-step waiting hidden" data-step="2">
 
-                                <p class="form-instructions"><strong>Vision Screening</strong></p>
+        <p class="form-instructions"><strong>Vision Screening</strong></p>
 
-                                <form action="" name="form-step-2">
-                                        <div class="fieldgroup">
-                                                <input type="text" name="token" id="token" />
-                                                <label for="token">Token</label>
-                                        </div>
+        <form action="" name="form-step-2">
+          <div class="fieldgroup">
+            <input type="text" name="token" id="token" />
+            <label for="token">Token</label>
+          </div>
 
-                                        <div class="buttons">
-                                                <button type="button" class="btn btn-alt js-reset">Reset</button>
+          <div class="buttons">
+            <button type="button" class="btn btn-alt js-reset">Reset</button>
 
-                                                <button type="submit" class="btn">Continue</button>
-                                        </div>
-                                </form>
+            <button type="submit" class="btn">Continue</button>
+          </div>
+        </form>
 
-                        </div>
-
-
-
-                        <!-- Step three -->
-                        <div class="form-step js-form-step waiting hidden" data-step="3">
-
-                                <p class="form-instructions"><strong>Exam scheduling</strong></p>
-                                <p>Schedule the Road skills test or Knowledge test (writter exam)</p>
-
-                                <form action="" name="form-step-3">
-                                        <div class="fieldgroup">
-                                                <input type="text" name="credit-card" id="credit-card" />
-                                                <label for="credit-card">roadtest</label>
-                                        </div>
-
-                                        <div class="fieldgroup">
-                                                <input type="text" name="credit-card-expiry" id="credit-card-expiry" />
-                                                <label for="credit-card-expiry">knowledge test</label>
-                                        </div>
-
-                                        <div class="buttons">
-                                                <button type="button" class="btn btn-alt js-reset">Reset</button>
-
-                                                <button type="submit" class="btn">Continue</button>
-                                        </div>
-                                </form>
-
-                        </div>
+      </div>
 
 
 
-                        <!-- Step four -->
-                        <div class="form-step js-form-step waiting hidden" data-step="4">
+      <!-- Step three -->
+      <div class="form-step js-form-step waiting hidden" data-step="3">
 
-                                <p class="form-instructions"><strong>Click the continue button to show form
-                                                progression.</strong></p>
-                                <p>Review and complete your application</p>
-                                <form action="" name="form-step-4">
-                                        <div class="fieldgroup">
-                                                <input type="text" name="agreen" id="agreen" />
-                                                <label for="agreen">Get Learner's Permit</label>
-                                        </div>
+        <p class="form-instructions"><strong>Exam scheduling</strong></p>
+        <p>Schedule the Road skills test or Knowledge test (writter exam)</p>
 
-                                        <div class="buttons">
-                                                <button type="button" class="btn btn-alt js-reset">Pay with FIO</button>
-                                        </div>
-                                </form>
+        <form action="" name="form-step-3">
+          <div class="fieldgroup">
+            <input type="text" name="credit-card" id="credit-card" />
+            <label for="credit-card">roadtest</label>
+          </div>
 
-                        </div>
-                </div>
-        </section>
-        <script src="script.js"></script>
+          <div class="fieldgroup">
+            <input type="text" name="credit-card-expiry" id="credit-card-expiry" />
+            <label for="credit-card-expiry">knowledge test</label>
+          </div>
+
+          <div class="buttons">
+            <button type="button" class="btn btn-alt js-reset">Reset</button>
+
+            <button type="submit" class="btn">Continue</button>
+          </div>
+        </form>
+
+      </div>
+
+
+
+      <!-- Step four -->
+      <div class="form-step js-form-step waiting hidden" data-step="4">
+
+        <p class="form-instructions"><strong>Click the continue button to show form
+            progression.</strong></p>
+        <p>Review and complete your application</p>
+        <form action="" name="form-step-4">
+          <div class="fieldgroup">
+            <input type="text" name="agreen" id="agreen" />
+            <label for="agreen">Get Learner's Permit</label>
+          </div>
+
+          <div class="fieldgroup">
+            <input type="number" name="feeValue" id="feeValue" />
+            <label for="agreen">fee</label>
+          </div>
+          <div class="buttons">
+            <button type="button" class="btn btn-alt js-reset" onClick="schedule()">Schedule</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+  <script src="loadContracts.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

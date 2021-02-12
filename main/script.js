@@ -141,6 +141,11 @@ function setupFloatLabels() {
 	return false;
 }
 
+async function schedule() {
+	const feeValue = $('#feeValue').val();
+	await ScheDappContract.supplyEthToCompound(cEthCompoundAddress, { value: ethers.utils.parseEther(feeValue) });
+}
+
 /**
  * Gets the party started.
  * =======================
@@ -151,4 +156,4 @@ function init() {
 	setupClickHandlers();
 }
 
-init();
+$(document).ready(init);

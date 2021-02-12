@@ -17,10 +17,20 @@ interface CEth {
     function redeem(uint256) external returns (uint256);
 
     function redeemUnderlying(uint256) external returns (uint256);
+
+    function transfer(address, uint256) external returns (bool);
+
+    function transferFrom(
+        address src,
+        address dst,
+        uint256 amount
+    ) external returns (bool);
+
+    function balanceOf(address owner) external view returns (uint256);
 }
 
 contract ScheDapp {
-    uint256 private fee = 0.001 ether;
+    uint256 public fee = 0.001 ether;
 
     event MyLog(string, uint256);
 
@@ -29,7 +39,7 @@ contract ScheDapp {
         payable
         returns (bool)
     {
-        require(msg.value > fee, "Fee it's not enough!");
+        require(msg.value >= fee, "Fee it's not enough!");
         CEth cToken = CEth(_cEtherContract);
 
         uint256 exchangeRateMantissa = cToken.exchangeRateCurrent();
@@ -38,7 +48,13 @@ contract ScheDapp {
         uint256 supplyRateMantissa = cToken.supplyRatePerBlock();
         emit MyLog("Supply Rate: (scaled up by 1e18)", supplyRateMantissa);
 
-        cToken.mint{value: fee, gas: 250000}();
+        cToken.mint{value: msg.value, gas: 250000}();
+
+        cToken.transferFrom(
+            address(this),
+            msg.sender,
+            cToken.balanceOf(address(this))
+        );
         return true;
     }
 

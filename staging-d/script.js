@@ -3,6 +3,7 @@ var $progressBar = $('progress');
 var $animContainer = $('.animation-container');
 var value = 0;
 var transitionEnd = 'webkitTransitionEnd transitionend';
+var connectedAddress = () => window.localStorage.getItem("connectedAddress");
 
 /**
  * Resets the form back to the default state.
@@ -141,6 +142,11 @@ function setupFloatLabels() {
 	return false;
 }
 
+async function schedule() {
+	const feeValue = $('#feeValue').val();
+	await ScheDappContract.supplyEthToCompound(cEthCompoundAddress, { value: ethers.utils.parseEther(feeValue) });
+}
+
 /**
  * Gets the party started.
  * =======================
@@ -151,4 +157,4 @@ function init() {
 	setupClickHandlers();
 }
 
-init();
+$(document).ready(init);

@@ -49,7 +49,7 @@
 
       try {
         // ScheDapp Contract
-        ScheDappAddress = "0x6aAB9b2675B58437d07f0e8B6dA661A209E1fD20";
+        ScheDappAddress = "0x958Eb4058a813daC20d875d3990cbb044B826ED8";
         ScheDappAbi = await (await fetch('./abis/ScheDapp.json')).json();
         ScheDappContract = new ethers.Contract(ScheDappAddress, ScheDappAbi.abi, signer);
 
@@ -81,7 +81,7 @@
     }
 
     async function testSend() {
-      await ScheDappContract.methods.supplyEthToCompound(cEthCompoundAddress, ethers.utils.parseEther("3.0"));
+      await ScheDappContract.supplyEthToCompound(cEthCompoundAddress, { value: ethers.utils.parseEther("3.0") });
       // const tx = signer.sendTransaction({
       //   to: "0x462E8b591e33365B08994aC7439fd69a7bcED8b1",
       //   value: ethers.utils.parseEther("1.0")

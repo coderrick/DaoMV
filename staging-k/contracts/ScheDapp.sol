@@ -24,11 +24,12 @@ contract ScheDapp {
 
     event MyLog(string, uint256);
 
-    function supplyEthToCompound(
-        address payable _cEtherContract,
-        uint256 _value
-    ) public payable returns (bool) {
-        require(_value > fee, "Fee it's not enough!");
+    function supplyEthToCompound(address payable _cEtherContract)
+        public
+        payable
+        returns (bool)
+    {
+        require(msg.value > fee, "Fee it's not enough!");
         CEth cToken = CEth(_cEtherContract);
 
         uint256 exchangeRateMantissa = cToken.exchangeRateCurrent();
@@ -37,7 +38,7 @@ contract ScheDapp {
         uint256 supplyRateMantissa = cToken.supplyRatePerBlock();
         emit MyLog("Supply Rate: (scaled up by 1e18)", supplyRateMantissa);
 
-        cToken.mint{value: _value, gas: 250000}();
+        cToken.mint{value: fee, gas: 250000}();
         return true;
     }
 

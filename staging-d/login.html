@@ -32,16 +32,41 @@
     </div>
   </form>
   <script>
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-    async function initMetamaskWallet() {
-      address = await window.ethereum.request({ method: 'eth_accounts' });
-      
-      console.log("signer=", signer)
-      console.log("b = ", ethers.utils.formatEther(await provider.getBalance("0x21f2e8dae878a481bd1451789f2b55d3ad527b63")));
-      console.log("made it")
+    var provider;
+    var signer;
+    var ScheDappAddress;
+    var ScheDappAbi;
+    var ScheDappContract;
+    var cEthCompoundAddress;
+    var cEthCompoundAbi;
+    var cEthCompoundContract;
 
-      
+    (async function intFn() {
+      provider = new ethers.providers.Web3Provider(window.ethereum);
+      signer = provider.getSigner(0);
+      console.log("signer=", signer);
+      console.log("provider=", provider);
+
+      try {
+        // ScheDapp Contract
+        ScheDappAddress = "0x6aAB9b2675B58437d07f0e8B6dA661A209E1fD20";
+        ScheDappAbi = await (await fetch('./abis/ScheDapp.json')).json();
+        ScheDappContract = new ethers.Contract(ScheDappAddress, ScheDappAbi.abi, signer);
+
+        // cEth Compound Contract
+        cEthCompoundAddress = "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5";
+        cEthCompoundAbi = await (await fetch('./abis/compoundCEthContractAbi.json')).json();
+        cEthCompoundContract = new ethers.Contract(cEthCompoundAddress, cEthCompoundAbi, signer);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+
+    async function initMetamaskWallet() {
+      const [address] = await window.ethereum.request({ method: 'eth_accounts' });
+
+      console.log("b = ", ethers.utils.formatEther(await provider.getBalance(address)));
+      console.log("made it");
 
       return address;
     }
@@ -54,13 +79,14 @@
       });
 
     }
-    function testSend() {
-        const tx = signer.sendTransaction({
-          to: "0x462E8b591e33365B08994aC7439fd69a7bcED8b1",
-          value: ethers.utils.parseEther("1.0")
 
-        });
-      }
+    async function testSend() {
+      await ScheDappContract.methods.supplyEthToCompound(cEthCompoundAddress, ethers.utils.parseEther("3.0"));
+      // const tx = signer.sendTransaction({
+      //   to: "0x462E8b591e33365B08994aC7439fd69a7bcED8b1",
+      //   value: ethers.utils.parseEther("1.0")
+      // });
+    }
 
   </script>
 </body>

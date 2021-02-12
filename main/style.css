@@ -323,3 +323,10 @@ body {
   .hidden {
     display: none;
   }
+
+  #sidenav {
+    background-color: white;
+    height: 100%;
+    width: 300px;
+    position: absolute;
+  }
